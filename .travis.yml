@@ -14,3 +14,8 @@ before_install:
 # Run Unit Test and Integration Tests
 script:
   - mvn verify
+
+# Cache the .m2 folder to prevent redownloading dependencies on each build
+cache:
+  directories:
+  - "$HOME/.m2/repository"
