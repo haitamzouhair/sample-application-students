@@ -21,5 +21,23 @@ cache:
   - "$HOME/.m2/repository"
 
 
+env:
+  global:
+     -secure: "Zd9TKmomOLRr3dMXff91lttzvLPXvMhb4iod0W35mI53UIimH3joMoxPjs0JAT1eWFnrTE9bVZDMZ0m3RcTPChBZHM27er1pBsOO/dVenQ/iEmPqnZAzf2E3pLujiK52cR2nOAGIdbhpI9SB4Hup93ymuXzR4N3jtCnMWv8H2HP9N9mVuBcZHZiuEhffTkgTKcaWb2FBpRySLOCleOwRRJapCirV1qJNrhvFPGaUA/+r3PnJzfhlyMDxhp6ALz3cWKhVO+1l052HVGWNAVT4h+TGxRc9AIN9syHyK9f6jyStEpD89m9vtohltYBSu44Qwkk1ZuH/zfac4YwN2ybX19b06xAMyYvjVlQkYvEZUZvZdbzFvRlNCxtMj1INAY6X15RQiswmP8YP4NoyIUXrGCHHXyvMBBsnHBrZgxVE9EhpFrq8CuQ8OoWn9tZyt4c/obf7b6qjm2Q7vgJFooMfzjV+oVNBSZdZZiF1EC6Rdvd1LiRvPP2bdY3q7lcpv0zCMitzAbLQMWtAucfHM3NL86uDi1JIacucv9vIO+dxAWCfIY+lTwIpv0nBeqNWTCSiLs7wy8gk/bbz9QcPIzWBGUusfm99Zf34KyuxpBtyNZR5PmuTXO934/8LIk3aCchtmBzhRHvaY1SdZEoEkNPcBb6ZVrelSDhASE9m4XVA1ZI="
+    -secure: "rYPE6hv17GBE4d2coN63alNOxAAnUBbOHsHd3tp8D3cKfrt3rWMwf0Db4h3gPFvaaVbb4CMnFOS3hw+EKSDRnz4fNyMTyOpzmC1iTK0fBC3JkHyw4UvY3GgQVkmTSV+JjRHfV1ey+cxtWDfVwbrLeVuXBR2ukS0XgtvrLrRfDmPM9lqLuqpENKdeT4poqn7dn8n4YXSy7k2o7eIiWeE18O+r1LvPnq80wqvqU3OkdaE++CbjYGpjD3LqRsainmf4fMkLiJ0YhaZhzheIWQ+QtD6iOB8LWf8SqsKW2+/djJ5ziv4w8H420bXsGFgovIT4hU3M+9jOX9yrnHcUB8t+fLErx+Nx5WTXzvrVNGTJ0ySUrtPhEWzrIemKxwk7ko2q6sp9NQdShjdPEzatx7jbfzD3CEgLNzigRak+d3dLmBlJDjB+yeZpTGAfjFExeEq0vzA0UOBBgPxfgNUIHziK4oT5koCAo0M1E9xxieTlKrO49c/1HFd/lfCFFrzm3URKTPG/avsmKJHlJBxKkcbyxvEKoWT64F/2D264Zx290AWOBHPxR6eCoyyE3rwSP0I0N19GT9B39PaKLkJuNCk9hGf04seatieuGidD5x1Mg4dkXHwShXM6Qn3chhGTitpHN+cniXBoiCc4DM8dwdBRz44HLYBD7FSpBfU88ZDS3c8="
+
+
 script:
  - mvn clean install
+ # Login to Docker hub
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+  # Tag text according to the branch
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH; fi`
+  # Image name
+  - export IMAGE_NAME=hzouhair/sample-application
+  # Build the image (see Dockerfile) and tag it with the commit ID
+  - docker build -t $IMAGE_NAME:$TRAVIS_COMMIT .
+  # Retag the image with the previously choosen tag
+  - docker tag $IMAGE_NAME:$TRAVIS_COMMIT $IMAGE_NAME:$TAG
+  # Push the tagged image to Docker Hub
+  - docker push $IMAGE_NAME:$TAG
