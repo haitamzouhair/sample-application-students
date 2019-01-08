@@ -9,12 +9,12 @@ before_install:
 - docker pull takimatraining/devops-training-db
 - docker run -d -p 127.0.0.1:3306:3306 takimatraining/devops-training-db
 # Prepare deploy
-  - openssl aes-256-cbc -K $encrypted_1f1039b32727_key -iv $encrypted_1f1039b32727_iv
-    -in travis_deploy_rsa.enc -out /tmp/travis_deploy_rsa -d  # Généré par travis encrypt-file
-  - chmod 600 /tmp/travis_deploy_rsa
-  - eval "$(ssh-agent -s)"
-  - ssh-add /tmp/travis_deploy_rsa
-  - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- openssl aes-256-cbc -K $encrypted_1f1039b32727_key -iv $encrypted_1f1039b32727_iv
+  -in travis_deploy_rsa.enc -out /tmp/travis_deploy_rsa -d  # Généré par travis encrypt-file
+- chmod 600 /tmp/travis_deploy_rsa
+- eval "$(ssh-agent -s)"
+- ssh-add /tmp/travis_deploy_rsa
+- echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
 script:
 - mvn clean install
