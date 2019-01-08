@@ -19,3 +19,15 @@ script:
 cache:
   directories:
   - "$HOME/.m2/repository"
+
+env:
+  global:
+    -secure:"k88W9lKG2YxcswKHlsEIXoeLNUHA9IwEKv5S3apSDZMIbeNzDyeyISe0FEsjnYkvh86ro2mgcegFZgWDtkw4XLF7/bWzOEwSm/sg74NA9tNCpDVUdMLoRmcJ5KtH8Wd9fNgUgVzoqfkoCtnuDOuHrSHYo8BFRodPANKLFmU6khZRzkkPHL5crnon+kaYSgjKfS0wOulwhuIvfJMDNPIibqgbT4w+HVh3nZL9DbVQJppn2bXJUdKogKhdTih5ZaG1nurgISuqAU3pq+6ahYzAkAdCPwjs2FODDYKHXXMuc5dWT9982GDoR2dtM8dwQhsmB2txEpZw9obTMoTrQBiKHG2BiwkRS2PHnZz8yx4hPx6XTPCsstI+97/xqWRv0cCv5ii8bPb0tARITTGAhg9fN0eiZrRWrNF3CU0ws0Ec03h3IXwyw71pSaiOTvjFcvYqWbOBuNemhGXj333ztHe7pONLmYEk/Urz8e1nw4gxOAj4SWNNNccde0mIu6O4ACp66v4yRK2uz8TDVkz4uSamQ71I6v9qv1AxrZ1pZok11Gt0LY4KyRvjC19mBUfG//yVPxtwiY5F2sYF0wNQc5m+zfIiZ9a2RXvl12J5bOaJn+11Z8W9CCJbrCq+xKFKqtdE89Dmd66Gijh8eQldrQ3xiDjDVXKr5TeOygkcaQQkL4Y="
+
+script:
+ - |
+    mvn clean install sonar:sonar \
+    -Dsonar.projectKey=<SONAR_PROJECT_KEY> \
+    -Dsonar.organization=<SONAR_ORGANISATION_KEY> \
+    -Dsonar.host.url=https://sonarcloud.io \
+    -Dsonar.login=$SONAR_TOKEN
