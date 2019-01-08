@@ -14,7 +14,7 @@ before_install:
 - chmod 600 /tmp/travis_deploy_rsa
 - eval "$(ssh-agent -s)"
 - ssh-add /tmp/travis_deploy_rsa
-- echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- echo -e "Host $SERVER_HOST\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
 script:
 - mvn clean install
