@@ -22,12 +22,13 @@ cache:
 
 env:
   global:
-    -secure:"k88W9lKG2YxcswKHlsEIXoeLNUHA9IwEKv5S3apSDZMIbeNzDyeyISe0FEsjnYkvh86ro2mgcegFZgWDtkw4XLF7/bWzOEwSm/sg74NA9tNCpDVUdMLoRmcJ5KtH8Wd9fNgUgVzoqfkoCtnuDOuHrSHYo8BFRodPANKLFmU6khZRzkkPHL5crnon+kaYSgjKfS0wOulwhuIvfJMDNPIibqgbT4w+HVh3nZL9DbVQJppn2bXJUdKogKhdTih5ZaG1nurgISuqAU3pq+6ahYzAkAdCPwjs2FODDYKHXXMuc5dWT9982GDoR2dtM8dwQhsmB2txEpZw9obTMoTrQBiKHG2BiwkRS2PHnZz8yx4hPx6XTPCsstI+97/xqWRv0cCv5ii8bPb0tARITTGAhg9fN0eiZrRWrNF3CU0ws0Ec03h3IXwyw71pSaiOTvjFcvYqWbOBuNemhGXj333ztHe7pONLmYEk/Urz8e1nw4gxOAj4SWNNNccde0mIu6O4ACp66v4yRK2uz8TDVkz4uSamQ71I6v9qv1AxrZ1pZok11Gt0LY4KyRvjC19mBUfG//yVPxtwiY5F2sYF0wNQc5m+zfIiZ9a2RXvl12J5bOaJn+11Z8W9CCJbrCq+xKFKqtdE89Dmd66Gijh8eQldrQ3xiDjDVXKr5TeOygkcaQQkL4Y="
+    -secure: "OAK2ggCbeg1XUbOJ7lZ6QNhNEXGiXPHARDjkRk2Lv8qWmIo+wNZ71agWoy7UVOpwGl9UVvqwikoxk+wCJXZRIK1JbhG+VJ7Kv6el2p2Bw6aAWNgq2s1cQ/GJUXurw0ZftECZA+o/Qt7E9Lnwszu6rdfJxtvc8xw3a8nVGGEvxbd6qT3aOgODmEEENTKv67B+bWnvzyStpaNQqxp+9GWqoeF6vjSuV3xKFpJjdN2ZWOSuhDLlpPQBMDgI7ye37UpD+ClVCvxsAh1VhRM4Zx1fixMmnfdSdHP6+itQh7Hsl62tUvshz8BzuG7tmi5RxDsLID6Dm1l7X7EYuZ68sg8kEoYO39vTM5jpnXHrBhqIsOqu4iFJ475dlHKw8sL9nV71vTPdJ++x3C6ecA4jc+Iu25hnlt36Sw2GPT175yJ9O4CanesP95kTMYpZlCDDe9qtnN7bDV7jAGzSbYRqxI/ezqaCDd4/KVt8jJTNmR3n6PWSxz2qYm9z8a4fA5hneXoqEAzjwW1etKEeA6WJFxczKME7/k6TdZkWkJR9v9F7AxXdFvkUauyfAUsOt+QWhyyIl4kAlo+yc9KKNlKPYUeLDQiBLYHO3u0slOqY9U8uuJXr74IuZBBZfQE+4O9iUqcwQUsPhr0tP68VPkwNmFUMk2lJmxR84MAV2QDu6nZ3D5o="
+
 
 script:
  - |
     mvn clean install sonar:sonar \
-    -Dsonar.projectKey=<SONAR_PROJECT_KEY> \
-    -Dsonar.organization=<SONAR_ORGANISATION_KEY> \
+    -Dsonar.projectKey=haitamzouhair_sample-application-students \
+    -Dsonar.organization=haitamzouhair-github \
     -Dsonar.host.url=https://sonarcloud.io \
     -Dsonar.login=$SONAR_TOKEN
