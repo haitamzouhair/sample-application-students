@@ -20,15 +20,6 @@ cache:
   directories:
   - "$HOME/.m2/repository"
 
-env:
-  global:
-    -secure: "qgWHO2D0UKj2LowfMUFLFW6qIM/FWua9fWJGpaL1uUxc7tpIJQhnYiWd+sgh9uwEP3SDkP+UO1lA1Ub002j2ia9W79gCaxGCjm4NNTYYR3Dqbm3TXsZ1P30k4twJ9GOPzAp8plDvzKeEkakv1rqdo+8Fd4g424Ycrac+5IuW3HhaG/BjV4oZZB5bH6OhcaZ8uNijpzzMkY1EHjTVy09xTALr7n89OrD4PtrdXqZOllWNrKCa+IyxbR17ITkv+musUrLrk9QQa/CAcrgGbxHp1HUWxmwEeUHxM2/k0z6m/uPGq7az0ZI2ryEX39X29j3QBnqdV5BdfLZNMoLQF5DYhYZbwVtQRu6Rne+NyvV5n5C5/O3ut3MEDbc+oVxIvgcucnsKLnVaa/YuwXU4J3SDORPgxwj68UfGe8QaQQSn4jpRPVFINpfQmXX5p2hshQ2t/dC5zcrrctJkKVesQFUb9ABMqPHqcVHxYuEwLtVSSMliV91+Uxt8BVxDBHwAYuJP1NjFkEk3sUT6CX3oeP8Wh+zr145KzxVWF+OUboierQLjV7lpApeOa6QpXJ63kXRxhpfeqsA1xnbiFAf3ZNtc1VMSB7EgBRNS+dH00xCOF/eKdPuzSn+fluarUKBMSKsKsA1eWu25JcV7GUa3jnH04fJDI4iUh1dA2C/IRDTnBbU="
-
 
 script:
- - |
-    mvn clean install sonar:sonar \
-    -Dsonar.projectKey=haitamzouhair_sample-application-students \
-    -Dsonar.organization=haitamzouhair-github \
-    -Dsonar.host.url=https://sonarcloud.io \
-    -Dsonar.login=$SONAR_TOKEN
+ - mvn clean install
